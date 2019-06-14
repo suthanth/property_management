@@ -156,3 +156,22 @@ class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
             )
 
 
+class RoomsForEachBuildingDetailView(generics.RetrieveAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+    def get(self, request, *args, **kwargs):
+        try:
+            application_data = list(Room.objects.filter(building=kwargs['building']))
+            print(application_data)
+            detail_view = RoomSerializer(application_data, many=True).data
+            return Response(
+                data=detail_view,
+                status=status.HTTP_200_OK
+            )
+
+        except Building.DoesNotExist:
+            return Response(
+                data='Invalid building Id {}'.format(kwargs['building']),
+                status=status.HTTP_404_NOT_FOUND
+            )
