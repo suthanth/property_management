@@ -49,3 +49,6 @@ class RoomSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.rent = validated_data['rent']
         instance.maintenance = validated_data['maintenance']
+
+        instance.save()
+        return instance
