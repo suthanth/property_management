@@ -1,0 +1,107 @@
+Project is using the Django framework.
+Follow the below steps to set up the project on your system:
+
+step1 : Installed python version - Python 3.6.6
+step2 : Install virtualenv - pip install virtualenv
+step3 : Use the following commands to run the application
+        cd D:\property_management
+        virtualenv venv
+        venv\Scripts\activate
+        pip install -r requirements.txt
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py runserver
+
+API Requests:
+
+POST for Building Object:
+-----------------------------------------------
+URL : http://localhost:8000/propertyApi/building/
+JSON Data:
+    {
+        "building_name": "build1",
+        "building_address": "add1",
+        "building_landmark": "land1"
+    }
+
+Fetch a building Object:
+------------------------------------------------
+URL : http://localhost:8000/propertyApi/building/1 -> 1 is the building object ID
+Sample Output :
+    {
+        "building_id": 1,
+        "building_name": "build1",
+        "building_address": "add1",
+        "building_landmark": "land1"
+    }
+
+POST for Room Object:
+-------------------------------------------------
+URL : http://localhost:8000/propertyApi/room/
+JSON Data:
+    {
+    "flat_number": "Flat_8",
+    "rent": 89,
+    "number_of_bathroom": 1,
+    "maintenance": 67,
+    "type": "BHK_2",
+    "building": 1,
+}
+
+Fetch a Room Object:
+--------------------------------------------------
+URL : http://localhost:8000/propertyApi/room/8 -> 8 is the Room object ID
+sample Output:
+    {
+        "room_id": 8,
+        "flat_number": "Flat_8",
+        "rent": 89,
+        "number_of_bathroom": 1,
+        "maintenance": 67,
+        "type": "BHK_2",
+        "building": 3,
+        "building_details": {
+            "building_id": 3,
+            "building_name": "2",
+            "building_address": "shdfkjs",
+            "building_landmark": "ksjhdkjfhsdk"
+        }
+    }
+
+Fetch a All Room Objects of a building:
+-----------------------------------------------------
+URL : http://localhost:8000/propertyApi/building/1/allRoom -> 1 is the Building Object ID
+Sample Output:
+    [
+        {
+            "room_id": 5,
+            "flat_number": "Flat_5",
+            "rent": 66,
+            "number_of_bathroom": 2,
+            "maintenance": 77,
+            "type": "BHK_1",
+            "building": 1,
+            "building_details": {
+                "building_id": 1,
+                "building_name": "build1",
+                "building_address": "add1",
+                "building_landmark": "land1"
+            }
+        },
+        {
+            "room_id": 6,
+            "flat_number": "Flat_6",
+            "rent": 66,
+            "number_of_bathroom": 2,
+            "maintenance": 77,
+            "type": "BHK_1",
+            "building": 1,
+            "building_details": {
+                "building_id": 1,
+                "building_name": "build1",
+                "building_address": "add1",
+                "building_landmark": "land1"
+            }
+        }
+    ]
+

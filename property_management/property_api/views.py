@@ -7,6 +7,9 @@ from property_management.property_api.serializers import BuildingSerializer, Roo
 
 
 class BuildingCreateView(generics.ListCreateAPIView):
+    """
+    This class is responsible for creating a Building object
+    """
     queryset = Building.objects.all()
     serializer_class = BuildingSerializer
 
@@ -34,6 +37,9 @@ class BuildingCreateView(generics.ListCreateAPIView):
 
 
 class BuildingDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This class is responsible for fetch, update and delete a building object
+    """
     queryset = Building.objects.all()
     serializer_class = BuildingSerializer
 
@@ -83,6 +89,9 @@ class BuildingDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class RoomCreateView(generics.ListCreateAPIView):
+    """
+    This class is responsible for creating a Room object
+    """
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
@@ -110,6 +119,9 @@ class RoomCreateView(generics.ListCreateAPIView):
 
 
 class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    This class is responsible for fetch, update and delete a Room object
+    """
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
@@ -157,6 +169,9 @@ class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class RoomsForEachBuildingDetailView(generics.RetrieveAPIView):
+    """
+    This class is responsible for fetching all Room objects for specified Building object
+    """
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
